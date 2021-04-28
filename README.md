@@ -14,7 +14,7 @@ This will install the code into the following places:
   
 --Windows: /Documents/ReGUI
 
-To run the code, you can either create a shortcut (.bat file), or you can run the code directly from the commandline using: 
+To run the code, you can either use one of the shortcuts (.command for Linux and macOS, .bat for Windows), or you can run the code directly from the commandline using: 
   python3 ReGUI.py
 
 To find the IP Address and password of your device, please go to settings, help, Copyrights and Licences, and the IP Address and passwords should be at the bottom of the page. If the device is plugged in, then one of the IP addresses is the wired address. I would recommend using that whenever possible to minimize latency.
