@@ -18,8 +18,6 @@ def linux():
     for command in cmds:
         print(command)
         reply = os.system(command)
-        if(reply == 'mkdir: cannot create directory ‘ReGUI’: File exists'):
-            print("Error, file already exists")
 
 
 def darwin():
