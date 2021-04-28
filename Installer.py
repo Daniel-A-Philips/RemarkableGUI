@@ -15,7 +15,6 @@ time.sleep(5)
 def linux():
     withoutHome = currentPos[currentPos.find('home')+5:len(currentPos)]
     path = '/home/' + withoutHome[0:withoutHome.find('/')+1]
-    print(path)
     toMoveTo = path + 'Documents/ReGUI/'
     InstallerPos = currentPos + "/" + filesToMove[0]
     ReGUIPos = currentPos + "/" + filesToMove[1]
@@ -23,7 +22,6 @@ def linux():
     moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
     cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
     for command in cmds:
-        print(command)
         reply = os.system(command)
 
 
@@ -33,10 +31,8 @@ def darwin(): # MacOS
     ReGUIPos = currentPos + "/" + filesToMove[1]
     moveInstaller = 'cp ' + InstallerPos + ' ' + toMoveTo
     moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
-    cmds = ['cd','cd /Applications','mkdir ReGUI','cd ReGUI',]
     cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
     for command in cmds:
-        print(command)
         reply = os.system(command)
 
 def win32():
@@ -45,10 +41,8 @@ def win32():
     ReGUIPos = currentPos + "/" + filesToMove[1]
     moveInstaller = 'cp ' + InstallerPos + ' ' + toMoveTo
     moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
-    cmds = ['cd','cd /documents','mkdir ReGUI','cd ReGUI',]
     cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
     for command in cmds:
-        print(command)
         reply = os.system(command)
 
 OS = sys.platform   
