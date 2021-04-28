@@ -1,17 +1,16 @@
 import os
+import time
 import sys
 from threading import Thread
 
 filesToMove = ['Installer.py','ReGUI.py']
-remouse3__Installer = Thread(target = lambda: os.system("pip3 install remarkable-mouse"))
-remouse__Installer = Thread(target = lambda: os.system("pip install remarkable-mouse"))
-pysimplegui3__Installer = Thread(target = lambda: os.system("pip3 install PySimpleGUI"))
-pysimplegui__Installer = Thread(target = lambda: os.system("pip install PySimpleGUI"))
 
-remouse3__Installer.start()
-remouse__Installer.start()
-pysimplegui3__Installer.start()
-pysimplegui__Installer.start()
+commands = "pip3 install remarkable-mouse; pip install remarkable-mouse; pip3 install PySimpleGUI; pip install PySimpleGUI"
+commander = Thread(target = lambda: os.system(commands))
+
+commander.start()
+
+time.sleep(5)
 
 def linux():
     withoutHome = currentPos[currentPos.find('home')+5:len(currentPos)]
@@ -61,3 +60,5 @@ elif OS == 'win32':
     win32()
 elif OS == 'darwin':
     darwin()
+
+print("Download complete")

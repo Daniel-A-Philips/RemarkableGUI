@@ -51,7 +51,7 @@ def run(values):
         print(toWrite)
         File.write(toWrite)
         File.close()
-    elif values[3]:
+    if values[3]:
         cmd += " --evdev"
     print(cmd)
     return cmd
