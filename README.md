@@ -8,14 +8,15 @@ To install, please download the code as a ZIP, and using a terminal, run Install
 
 This will install the code into the following places:
 
-  MacOS: /Applications/ReGUI
+--MacOS: /Applications/ReGUI
  
-  Linux: /Documents/ReGUI
+--Linux: /Documents/ReGUI
   
-  Windows: /Documents/ReGUI
+--Windows: /Documents/ReGUI
 
 To run the code, you can either create a shortcut (.bat file), or you can run the code direclty from the commandline using: 
   python3 ReGUI.py
 
 Warning: 
-  EVDEV is only available on linux due to Wacom drivers
+
+--EVDEV is only available on linux due to Wacom drivers
