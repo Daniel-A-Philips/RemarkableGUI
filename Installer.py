@@ -3,7 +3,7 @@ import time
 import sys
 from threading import Thread
 
-filesToMove = ['Installer.py','ReGUI.py']
+filesToMove = ['Installer.py','Installer.bat','Installer.command','ReGUI.py','ReGUI.bat','ReGUI.command']
 
 commands = "pip3 install remarkable-mouse; pip install remarkable-mouse; pip3 install PySimpleGUI; pip install PySimpleGUI"
 commander = Thread(target = lambda: os.system(commands))
@@ -13,35 +13,41 @@ commander.start()
 time.sleep(5)
 
 def linux():
+    fileToMove.remove(1)
+    fileToMove.remove(3)
     withoutHome = currentPos[currentPos.find('home')+5:len(currentPos)]
     path = '/home/' + withoutHome[0:withoutHome.find('/')+1]
     toMoveTo = path + 'Documents/ReGUI/'
-    InstallerPos = currentPos + "/" + filesToMove[0]
-    ReGUIPos = currentPos + "/" + filesToMove[1]
-    moveInstaller = 'cp ' + InstallerPos + ' ' + toMoveTo
-    moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
-    cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
+    moveCommands = ''
+    for File in filesToMove:
+        prevPos = currentPos + "/" + File
+        moveCommands = moveCommands + ('cp ' + prevPos + ' ' + toMoveTo) + ';'
+    cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveCommands]
     for command in cmds:
         reply = os.system(command)
 
 
 def darwin(): # MacOS
+    fileToMove.remove(1)
+    fileToMove.remove(3)
     toMoveTo = '/Applications/ReGUI/'
-    InstallerPos = currentPos + "/" + filesToMove[0]
-    ReGUIPos = currentPos + "/" + filesToMove[1]
-    moveInstaller = 'cp ' + InstallerPos + ' ' + toMoveTo
-    moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
-    cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
+    moveCommands = ''
+    for File in filesToMove:
+        prevPos = currentPos + "/" + File
+        moveCommands = moveCommands + ('cp ' + prevPos + ' ' + toMoveTo) + ';'
+    cmds = ['cd','cd Applications','mkdir ' + toMoveTo,'cd ReGUI',moveCommands]
     for command in cmds:
         reply = os.system(command)
 
 def win32():
-    toMoveTo = '/documents/ReGUI/'
-    InstallerPos = currentPos + "/" + filesToMove[0]
-    ReGUIPos = currentPos + "/" + filesToMove[1]
-    moveInstaller = 'cp ' + InstallerPos + ' ' + toMoveTo
-    moveReGUI = 'cp ' + ReGUIPos + ' ' + toMoveTo
-    cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveInstaller,moveReGUI]
+    fileToMove.remove(2)
+    fileToMove.remove(4)
+    toMoveTo = '/Documents/ReGUI/'
+    moveCommands = ''
+    for File in filesToMove:
+        prevPos = currentPos + "/" + File
+        moveCommands = moveCommands + ('cp ' + prevPos + ' ' + toMoveTo) + ';'
+    cmds = ['cd','cd Documents','mkdir ' + toMoveTo,'cd ReGUI',moveCommands]
     for command in cmds:
         reply = os.system(command)
 
