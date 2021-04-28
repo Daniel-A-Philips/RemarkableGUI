@@ -2,7 +2,7 @@ import os
 import PySimpleGUI as sg
 import binascii as bnsci
 from threading import Thread
-
+import subprocess
 
 def make_bitseq(s):
      return " ".join(f"{ord(i):08b}" for i in s)
@@ -74,24 +74,24 @@ def runWithSavedData(values):
         print(values)
         return run(values)
 
-global thread
-
 while True:
     event, values = window.read()
     cmd = ""
-    thread = Thread(target = lambda: os.system(cmd))
     if event == "Run":
+        numChoice = 1
         cmd = run(values)
         thread = Thread(target = lambda: os.system(cmd))
         thread.start()
+
     elif event == "Run using saved data":
         cmd = runWithSavedData(values)
         thread = Thread(target = lambda: os.system(cmd))
         thread.start()
+
     else:
+
         window.close()
         exit()
-        SystemExit
 
 
 
