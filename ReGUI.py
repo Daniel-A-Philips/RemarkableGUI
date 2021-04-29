@@ -87,10 +87,9 @@ while True:
         cmd = runWithSavedData(values)
         thread = Thread(target = lambda: os.system(cmd))
         thread.start()
-
     else:
-
         window.close()
+        os.system("pkill -n remouse")
         exit()
 
 
